@@ -2,10 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/skazki', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Could not connect to MongoDB', err));
+// Connect to MongoDB Atlas
+mongoose.connect('mongodb+srv://mcswordyt:1234@cluster0.vgkl87j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch(err => console.error('Could not connect to MongoDB Atlas', err));
 
 // Define schema for stories
 const storySchema = new mongoose.Schema({
@@ -48,7 +48,6 @@ app.get('/about', (req, res) => {
 app.get('/contacts', (req, res) => {
     res.sendFile(__dirname + '/public/contacts.html');
 });
-
 
 const port = process.env.PORT || 3000;
 app.use(express.static('public'));
